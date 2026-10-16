@@ -1,0 +1,35 @@
+C2D COLLECTE – Application mobile de collecte et de reporting des données du C2D
+Version 1.0.0 (démonstration fonctionnelle) – STADE-C2D – 16/10/2026
+
+FORMAT : application web progressive (PWA), gratuite, sans licence ni magasin d'applications.
+Elle s'ouvre dans Chrome sur Android, s'installe sur l'écran d'accueil et fonctionne hors connexion.
+
+CONTENU DU DOSSIER
+  index.html            l'application complète (écrans, contrôles, données BD_C2D_v08 intégrées)
+  manifest.webmanifest  nom, icônes et couleurs pour l'installation sur Android
+  sw.js                 service worker : mise en cache pour le fonctionnement hors connexion
+  icon-192.png, icon-512.png   icônes
+
+1. HÉBERGER GRATUITEMENT (au choix)
+  a) GitHub Pages : créer un dépôt, y déposer les 5 fichiers, Settings > Pages > Branch main > Save.
+     L'adresse est https://<compte>.github.io/<depot>/
+  b) Netlify Drop : ouvrir app.netlify.com/drop et glisser-déposer le dossier.
+  c) Serveur interne du STADE-C2D : copier le dossier dans un site servi en HTTPS (Nginx, IIS).
+  Le HTTPS est obligatoire pour l'installation et le hors connexion (sauf http://localhost).
+
+2. INSTALLER SUR UN TÉLÉPHONE ANDROID
+  Ouvrir l'adresse dans Chrome, puis menu ⋮ > « Ajouter à l'écran d'accueil » (ou « Installer l'application »).
+
+3. COMPTES DE DÉMONSTRATION (mot de passe : C2D2026)
+  agent.collecte   Collecteur : saisie, brouillon, soumission, pièces, synchronisation
+  gest.financier   Gestionnaire financier : saisie et export
+  controleur       Contrôleur / validateur : validation, renvoi avec motif, publication
+  admin            Administrateur : tous les droits, réouverture, réinitialisation de la base
+
+4. LIMITES DE CETTE VERSION
+  - Les données sont stockées dans le navigateur du terminal (base locale). Le « serveur » de synchronisation
+    est simulé sur le terminal : il rejoue les contrôles, attribue les numéros d'ordre et tient le journal.
+    Le partage entre plusieurs terminaux nécessite l'API du serveur STADE-C2D (SFT, livrables 5 et 6).
+  - Authentification de démonstration (comptes locaux), sans chiffrement de la base locale.
+  - Pour tester sur ordinateur : dans ce dossier, lancer « python -m http.server 8000 » puis ouvrir
+    http://localhost:8000
